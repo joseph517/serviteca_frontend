@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { InputTextModule } from 'primeng/inputtext';
+import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -8,18 +9,30 @@ import { InputTextModule } from 'primeng/inputtext';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  public value!: string;
 
-  login():void{
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const password = (document.getElementById('password') as HTMLInputElement).value;
+  constructor(
+    private authService: AuthService
+  ) { }
 
-    const data = {
-      email: email,
-      password: password
-    };
+  public formLogin = new FormGroup({
+    email: new FormControl<string>('', Validators.required),
+    password: new FormControl<string>('', Validators.required)
+  })
 
-    console.log(data)
+  login(): void {
+
+    if (!this.formLogin.valid) return alert('formulario no valido')
+
+    this.authService.login(this.formLogin.value as Form)
+      .subscribe(
+        response => {
+          console.log(response)
+          localStorage.setItem("acces_token", response.access)
+        },
+        err => {
+          alert('Erro de autenticacion')
+        }
+      )
 
   }
 }

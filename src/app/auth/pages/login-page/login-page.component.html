@@ -1,14 +1,14 @@
 <div class="container-form flex flex-column" >
   <span class="text-lg mb-4">Login</span>
 
-<form class="card flex justify-content-center flex-column">
+<form [formGroup]="formLogin" class="card flex justify-content-center flex-column">
     <div class="flex flex-column gap-2">
         <label htmlFor="username">Correo electronico</label>
-        <input pInputText id="username" aria-describedby="username-help" />
+        <input formControlName="email" pInputText id="username" aria-describedby="username-help" />
     </div>
     <div class="pass flex flex-column gap-2">
       <label htmlFor="username">Contraseña</label>
-      <p-password [toggleMask]="true" [feedback]="false"></p-password>
+      <p-password formControlName="password" [toggleMask]="true" [feedback]="false"></p-password>
   </div>
 </form>
 

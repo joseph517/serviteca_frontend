@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, Form } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,59 +12,50 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 export class RegisterPageComponent {
 
   public form = new FormGroup({
-    username: new FormControl<string>('', Validators.required),
-    firstName: new FormControl<string>('', Validators.required),
-    lastName: new FormControl<string>('', Validators.required),
-    email: new FormControl<string>('', [Validators.required, Validators.email]),
-    phone: new FormControl<string>('', Validators.required),
+    user_name: new FormControl<string>('', Validators.required),
+    name: new FormControl<string>('', Validators.required),
+    last_name: new FormControl<string>('', Validators.required),
+    email: new FormControl<string>('',  Validators.email),
+    number_phone: new FormControl('+57', [Validators.required, this.validatePhoneNumber.bind(this)]),
     password: new FormControl('', Validators.required)
   });
 
-  phoneExists = false;
-  userNameExists = false;
-  emailExists = false;
-
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private auth : AuthService,
+    private router: Router
+  ) { }
 
   resetForm(){
     this.form.reset()
   }
 
+  validatePhoneNumber(control: FormControl): { [key: string]: boolean } | null {
+    const phoneNumber = control.value;
+    const allowedChars = ['+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' '];
 
+    for (const char of phoneNumber) {
+      if (!allowedChars.includes(char)) {
+        return { 'invalidPhoneNumber': true };
+      }
+    }
 
-    // this.http.post('http://localhost:8000/api/client/create/', userData)
-    //   .subscribe(
-    //     response => {
-    //       // alert('Usuario creado exitosamente');
-    //       this.clearFields();
-    //     },
-    //     (error: HttpErrorResponse) => {
-    //       console.log('Código de error:', error.status, ', mensaje:', error.error);
-    //       if (error.status === 400) {
-    //         this.phoneExists = error.error.number_phone ? true : false;
-    //         this.userNameExists = error.error.user_name ? true : false;
-    //         this.emailExists = error.error.email ? true : false;
-    //       } else {
-    //         alert('Error interno del servidor. Por favor, intenta nuevamente más tarde.');
-    //       }
-    //     }
-    //   );
-
-
+    return null; // La validación pasa
   }
 
+  register(){
+    if(!this.form.valid) return alert('datos incorrectos')
 
+    this.auth.register(this.form.value as Form)
+      .subscribe(
+        res => {
+          console.log(res)
+          this.router.navigate(["/"])
+        },
+        err => {
+          console.log(err)
+        }
+      )
 
+  }
+}
 
-
-  // validatePhoneNumber(event: KeyboardEvent) {
-  //   const allowedKeys = ['+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' '];
-
-  //   const keyPressed = event.key;
-
-  //   if (!allowedKeys.includes(keyPressed) && keyPressed !== 'Backspace') {
-  //     event.preventDefault();
-  //   }
-  // }
-
-// }
