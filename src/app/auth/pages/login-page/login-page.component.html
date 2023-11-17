@@ -1,0 +1,29 @@
+<div class="form flex flex-column">
+  <span class="text-lg mb-4">Login</span>
+  <mat-form-field>
+    <mat-label>Correo Electronico</mat-label>
+    <input id="email" type="text" matInput placeholder="Nombre de Usuario">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Contraseña</mat-label>
+    <input id="password" type="password" matInput placeholder="Contraseña de Usuario">
+
+  </mat-form-field>
+
+
+  <span class="p-float-label">
+    <p-password [toggleMask]="true" [feedback]="false"></p-password>
+    <label for="password">Password</label>
+</span>
+
+
+  <button (click)="login()"  mat-button color="primary">
+    <mat-icon>save</mat-icon>
+    Ingresar
+  </button>
+
+  <div class="flex justify-content-end mt-5">
+    <a routerLink="/">Regresar</a>
+  </div>
+</div>

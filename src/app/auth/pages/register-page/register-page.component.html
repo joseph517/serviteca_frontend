@@ -1,0 +1,57 @@
+<form class="container" (ngSubmit)="registerUser()">
+  <div class="content">
+
+    <h1>Regístrate aquí</h1>
+
+    <table>
+      <tr>
+        <td>
+          <label for="userName">Nombre de usuario:</label>
+          <input type="text" id="userName" name="userName"  required
+            [class.invalid-input]="userNameExists" (input)="clearError('userName')">
+          <div class="error-message" *ngIf="userNameExists">El nombre de usuario ya existe.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="lastName">Apellido:</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="email">Correo electrónico:</label>
+          <input type="email" id="email" name="email" [class.invalid-input]="emailExists"
+            (input)="clearError('email')">
+          <div class="error-message" *ngIf="emailExists">El correo electrónico ya existe.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="phoneNumber">Número de teléfono:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber"  required
+            [class.invalid-input]="phoneExists" (input)="clearError('phoneNumber')"
+            (keydown)="validatePhoneNumber($event)">
+          <div class="error-message" *ngIf="phoneExists">El número de teléfono ya existe.</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required>
+        </td>
+      </tr>
+    </table>
+
+    <div class="button-container">
+      <button type="submit">Registrar</button>
+      <button type="button" (click)="clearFields()">Limpiar</button>
+    </div>
+  </div>
+</form>
