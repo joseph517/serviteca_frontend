@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-register-page',
@@ -7,28 +9,26 @@ import { Component } from '@angular/core';
 })
 export class RegisterPageComponent {
 
-  userName = '';
-  name = '';
-  lastName = '';
-  email = '';
-  phoneNumber = '';
-  password = '';
+  public form = new FormGroup({
+    username: new FormControl<string>('', Validators.required),
+    firstName: new FormControl<string>('', Validators.required),
+    lastName: new FormControl<string>('', Validators.required),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    phone: new FormControl<string>('', Validators.required),
+    password: new FormControl('', Validators.required)
+  });
 
   phoneExists = false;
   userNameExists = false;
   emailExists = false;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
-  registerUser() {
-    const userData = {
-      user_name: this.userName,
-      name: this.name,
-      last_name: this.lastName,
-      email: this.email,
-      number_phone: this.phoneNumber,
-      password: this.password
-    };
+  resetForm(){
+    this.form.reset()
+  }
+
+
 
     // this.http.post('http://localhost:8000/api/client/create/', userData)
     //   .subscribe(
@@ -47,39 +47,22 @@ export class RegisterPageComponent {
     //       }
     //     }
     //   );
+
+
   }
 
-  clearFields() {
-    this.userName = '';
-    this.name = '';
-    this.lastName = '';
-    this.email = '';
-    this.phoneNumber = '';
-    this.password = '';
 
-    this.phoneExists = false;
-    this.userNameExists = false;
-    this.emailExists = false;
-  }
 
-  clearError(fieldName: string) {
-    if (fieldName === 'userName') {
-      this.userNameExists = false;
-    } else if (fieldName === 'email') {
-      this.emailExists = false;
-    } else if (fieldName === 'phoneNumber') {
-      this.phoneExists = false;
-    }
-  }
 
-  validatePhoneNumber(event: KeyboardEvent) {
-    const allowedKeys = ['+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' '];
 
-    const keyPressed = event.key;
+  // validatePhoneNumber(event: KeyboardEvent) {
+  //   const allowedKeys = ['+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' '];
 
-    if (!allowedKeys.includes(keyPressed) && keyPressed !== 'Backspace') {
-      event.preventDefault();
-    }
-  }
+  //   const keyPressed = event.key;
 
-}
+  //   if (!allowedKeys.includes(keyPressed) && keyPressed !== 'Backspace') {
+  //     event.preventDefault();
+  //   }
+  // }
+
+// }

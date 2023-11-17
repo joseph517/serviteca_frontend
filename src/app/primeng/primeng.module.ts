@@ -5,6 +5,8 @@ import { PrimengRoutingModule } from './primeng-routing.module';
 
 import { MenubarModule } from 'primeng/menubar';
 import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -17,7 +19,9 @@ import { PasswordModule } from 'primeng/password';
   ],
   exports: [
     MenubarModule,
-    PasswordModule
+    PasswordModule,
+    InputTextModule,
+    ButtonModule,
   ]
 })
 export class PrimengModule { }

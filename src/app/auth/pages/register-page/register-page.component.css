@@ -1,0 +1,18 @@
+.header{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.header-button{
+  margin: 20px 20px 0 0;
+}
+.container-form{
+  height: 100vh;
+  overflow: hidden;
+  align-items: center;
+}
+.button-container{
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,21 +1,16 @@
-<div class="form flex flex-column">
+<div class="container-form flex flex-column" >
   <span class="text-lg mb-4">Login</span>
-  <mat-form-field>
-    <mat-label>Correo Electronico</mat-label>
-    <input id="email" type="text" matInput placeholder="Nombre de Usuario">
-  </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Contraseña</mat-label>
-    <input id="password" type="password" matInput placeholder="Contraseña de Usuario">
-
-  </mat-form-field>
-
-
-  <span class="p-float-label">
-    <p-password [toggleMask]="true" [feedback]="false"></p-password>
-    <label for="password">Password</label>
-</span>
+<form class="card flex justify-content-center flex-column">
+    <div class="flex flex-column gap-2">
+        <label htmlFor="username">Correo electronico</label>
+        <input pInputText id="username" aria-describedby="username-help" />
+    </div>
+    <div class="pass flex flex-column gap-2">
+      <label htmlFor="username">Contraseña</label>
+      <p-password [toggleMask]="true" [feedback]="false"></p-password>
+  </div>
+</form>
 
 
   <button (click)="login()"  mat-button color="primary">
