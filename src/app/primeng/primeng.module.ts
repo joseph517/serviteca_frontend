@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -22,6 +23,7 @@ import { ButtonModule } from 'primeng/button';
     PasswordModule,
     InputTextModule,
     ButtonModule,
+    TableModule,
   ]
 })
 export class PrimengModule { }

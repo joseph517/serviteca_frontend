@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,8 @@ import { AuthService } from '../../services/auth.service';
 export class LoginPageComponent {
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   public formLogin = new FormGroup({
@@ -27,10 +29,13 @@ export class LoginPageComponent {
       .subscribe(
         response => {
           console.log(response)
-          localStorage.setItem("acces_token", response.access)
+          localStorage.setItem("acces_token", response.access),
+          localStorage.setItem("user_id", response.user_id.toString()),
+
+          this.router.navigate(['/dashboard'])
         },
         err => {
-          alert('Erro de autenticacion')
+          alert('Error de autenticacion')
         }
       )
 
