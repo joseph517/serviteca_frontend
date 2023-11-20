@@ -17,8 +17,6 @@ export class AuthService {
   private baseUrl: string = enviroments.baseUrl
 
   login(form: Form): Observable<Login>{
-    console.log(form)
-    console.log(`${this.baseUrl}token/`)
 
     return this.http.post<Login>(`${this.baseUrl}token/`, form);
 

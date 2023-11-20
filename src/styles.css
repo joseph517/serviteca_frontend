@@ -6,3 +6,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow: hidden;
 }
+
+.input-login.ng-touched.ng-invalid{
+  border: solid rebeccapurple;
+  border-radius: 6px;
+}

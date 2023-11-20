@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
 import { Vehicle } from '../../interface/users';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'users-list-vehicle',
@@ -13,6 +12,8 @@ export class ListVehicleComponent implements OnInit {
   listVehicles:Vehicle[] = []
 
   ngOnInit(): void {
+    this.vehicleService.vehicleEvent$
+      .subscribe(()=> this.fetchUserVehicles())
     this.fetchUserVehicles()
   }
 
@@ -55,6 +56,5 @@ export class ListVehicleComponent implements OnInit {
           console.error('Error al cargar la lista de vehículos:', err);
         }
       )
-
   }
 }

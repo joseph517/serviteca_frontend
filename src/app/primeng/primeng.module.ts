@@ -8,6 +8,8 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+
 
 
 
@@ -24,6 +26,7 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     ButtonModule,
     TableModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }

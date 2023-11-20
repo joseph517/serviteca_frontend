@@ -16,7 +16,7 @@ export class RegisterPageComponent {
     name: new FormControl<string>('', Validators.required),
     last_name: new FormControl<string>('', Validators.required),
     email: new FormControl<string>('',  Validators.email),
-    number_phone: new FormControl('+57', [Validators.required, this.validatePhoneNumber.bind(this)]),
+    number_phone: new FormControl('', [Validators.required]),
     password: new FormControl('', Validators.required)
   });
 
@@ -29,18 +29,6 @@ export class RegisterPageComponent {
     this.form.reset()
   }
 
-  validatePhoneNumber(control: FormControl): { [key: string]: boolean } | null {
-    const phoneNumber = control.value;
-    const allowedChars = ['+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' '];
-
-    for (const char of phoneNumber) {
-      if (!allowedChars.includes(char)) {
-        return { 'invalidPhoneNumber': true };
-      }
-    }
-
-    return null; // La validación pasa
-  }
 
   register(){
     if(!this.form.valid) return alert('datos incorrectos')

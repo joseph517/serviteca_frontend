@@ -11,6 +11,9 @@ import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { PrimengModule } from '../primeng/primeng.module';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { MateialModule } from '../mateial/mateial.module';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+
+
 
 
 
@@ -29,6 +32,11 @@ import { MateialModule } from '../mateial/mateial.module';
     MateialModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
+  ],
+  providers: [
+    provideNgxMask()
   ]
 })
 export class AuthModule { }
