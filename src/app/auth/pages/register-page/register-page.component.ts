@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl, Form } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { from } from 'rxjs';
+
+
 
 
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.css']
+  styleUrls: ['./register-page.component.css'],
+  providers: [MessageService]
+
 })
 export class RegisterPageComponent {
 
@@ -15,15 +21,20 @@ export class RegisterPageComponent {
     user_name: new FormControl<string>('', Validators.required),
     name: new FormControl<string>('', Validators.required),
     last_name: new FormControl<string>('', Validators.required),
-    email: new FormControl<string>('',  Validators.email),
+    email: new FormControl<string>('',  [Validators.email, Validators.required]),
     number_phone: new FormControl('', [Validators.required]),
     password: new FormControl('', Validators.required)
   });
 
   constructor(
     private auth : AuthService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) { }
+
+  show(message:string) {
+    this.messageService.add({ severity: 'error', summary: 'invalido', detail: message });
+  }
 
   resetForm(){
     this.form.reset()
@@ -31,15 +42,20 @@ export class RegisterPageComponent {
 
 
   register(){
-    if(!this.form.valid) return alert('datos incorrectos')
+    if(!this.form.valid) {
+      this.form.markAsDirty()
+      this.form.markAllAsTouched()
+      this.show('datos incorrectos')
+      return
+    }
 
     this.auth.register(this.form.value as Form)
       .subscribe(
         res => {
-          console.log(res)
           this.router.navigate(["/"])
         },
         err => {
+          console.log(this.form.value)
           console.log(err)
         }
       )

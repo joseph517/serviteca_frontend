@@ -8,6 +8,6 @@ body {
 }
 
 .input-login.ng-touched.ng-invalid{
-  border: solid rebeccapurple;
+  border: solid #3838ff;
   border-radius: 6px;
 }
