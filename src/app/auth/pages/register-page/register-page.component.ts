@@ -9,7 +9,7 @@ import { from } from 'rxjs';
 
 
 @Component({
-  selector: 'app-register-page',
+  selector: 'auth-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css'],
   providers: [MessageService]
@@ -47,6 +47,11 @@ export class RegisterPageComponent {
       this.form.markAllAsTouched()
       this.show('datos incorrectos')
       return
+    }
+
+    if(localStorage.getItem('rol') === 'true'){
+      return console.log('hola');
+
     }
 
     this.auth.register(this.form.value as Form)
