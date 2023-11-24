@@ -1,33 +1,33 @@
 <div class="register-button">
-  <p-button *ngIf="!showForm" (click)="isShowForm()" label="Registrar vehiculo" [outlined]="true" severity="secondary"></p-button>
+  <p-button *ngIf="!showForm" (click)="isShowForm()" label="Registrar vehiculo" [outlined]="true"
+    severity="secondary"></p-button>
 </div>
-<form *ngIf="showForm" [formGroup]="registerVehicleForm" (ngSubmit)="registerVehicle()" class="container-form" >
+<form *ngIf="showForm" [formGroup]="registerVehicleForm" (ngSubmit)="registerVehicle()" class="container-form">
   <h3>Resgistrar un vehiculo</h3>
   <div class="card  flex justify-content-center">
-  <div class="form-options">
-    <label for="brand">Marca:</label>
-    <input type="text" id="brand" pInputText formControlName="brand" />
-  </div>
+    <div class="form-options">
+      <label for="brand">Marca:</label>
+      <input type="text" id="brand" pInputText formControlName="brand" />
+    </div>
 
-  <div class="form-options">
-    <label for="model">Modelo:</label>
-    <input type="text" id="model" pInputText formControlName="model" />
-  </div>
+    <div class="form-options">
+      <label for="model">Modelo:</label>
+      <input type="text" id="model" pInputText formControlName="model" />
+    </div>
 
-  <div class="form-options">
-    <label for="year">año:</label>
-    <input type="text" id="year" pInputText formControlName="year" />
-  </div>
+    <div class="form-options">
+      <label for="year">año:</label>
+      <input type="text" id="year" pInputText formControlName="year" />
+    </div>
 
-  <div class="form-options">
-    <label for="plate">Numero de placa:</label>
-    <input type="text" id="plate" pInputText formControlName="plate_number" />
+    <div class="form-options">
+      <label for="plate">Numero de placa:</label>
+      <input type="text" id="plate" pInputText formControlName="plate_number" />
+    </div>
   </div>
-</div>
-<div class="form-buttons">
-  <p-button type="submit" label="Registrar" [outlined]="true" severity="secondary"></p-button>
-  <p-button (click)="isShowForm()" label="Ocultar" [outlined]="true" severity="danger"></p-button>
-</div>
+  <div class="form-buttons">
+    <p-button type="submit" label="Registrar" [outlined]="true" severity="secondary"></p-button>
+    <p-button (click)="isShowForm()" label="Ocultar" [outlined]="true" severity="danger"></p-button>
+  </div>
 </form>
-
-
+<p-toast></p-toast>

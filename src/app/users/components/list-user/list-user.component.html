@@ -1,0 +1,23 @@
+<div class="card">
+  <p-table [value]="listUsers"  [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Nombre de usuario</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Numero</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-client>
+          <tr>
+              <td>{{ client.user_name }}</td>
+              <td>{{ client. name }}</td>
+              <td>{{ client.last_name }}</td>
+              <td>{{ client.email }}</td>
+              <td>{{ client.number_phone }}</td>
+              <!-- <td><p-button icon="pi pi-times" (click)="deleteVehicle(vehicle.id)" [rounded]="true" [text]="true" severity="danger "></p-button></td> -->
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

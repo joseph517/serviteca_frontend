@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="header">
+    <p-button (click)="logout()" label="Cerrar sesion" [outlined]="true" severity="danger"></p-button>
+    <div class="name-user">
+      <h2>Hola, bienvenido: {{nameUser | uppercase}}</h2>
+    </div>
+  </div>
+  <div class="button-container">
+    <button (click)="showListVehicle()" >Lista de vehiculos</button>
+    <button (click)="showListUser()">Lista de usuarios</button>
+  </div>
+  <div class="body">
+    <users-list-vehicle *ngIf="listVehicle"></users-list-vehicle>
+    <user-list-user *ngIf="listClient"></user-list-user>
+  </div>
+</div>

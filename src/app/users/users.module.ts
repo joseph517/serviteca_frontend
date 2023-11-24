@@ -9,13 +9,17 @@ import { ListVehicleComponent } from './components/list-vehicle/list-vehicle.com
 
 import { PrimengModule } from '../primeng/primeng.module';
 import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
+import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
+import { ListUserComponent } from './components/list-user/list-user.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ListVehicleComponent,
-    RegisterVehicleComponent
+    RegisterVehicleComponent,
+    DashboardAdminComponent,
+    ListUserComponent
   ],
   imports: [
     CommonModule,

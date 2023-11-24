@@ -46,14 +46,17 @@ export class LoginPageComponent {
           localStorage.setItem("acces_token", response.access),
           localStorage.setItem("user_id", response.user_id.toString()),
           localStorage.setItem("name", response.name)
+          localStorage.setItem("rol", response.rol.toString())
 
-          this.router.navigate(['/dashboard'])
+          if (response.rol) {
+            this.router.navigate(['/dashboard/admin'])
+          } else {
+            this.router.navigate(['/dashboard'])
+          }
         },
         err => {
           this.show('Error de autenticacion')
-
         }
       )
-
   }
 }

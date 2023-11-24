@@ -8,3 +8,11 @@ export interface Vehicle {
   year:         number;
   plate_number: string;
 }
+
+export interface User {
+  user_name:    string;
+  name:         string;
+  last_name:    string;
+  email:        string;
+  number_phone: string;
+}

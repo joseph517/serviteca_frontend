@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from '../../services/vehicle.service';
-import { Vehicle } from '../../interface/users';
+import { Vehicle } from '../../interface/user.interface';
 
 @Component({
   selector: 'users-list-vehicle',

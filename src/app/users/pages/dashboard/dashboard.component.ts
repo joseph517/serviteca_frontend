@@ -20,10 +20,8 @@ export class DashboardComponent implements OnInit {
 
   logout(){
     localStorage.clear()
-    // localStorage.removeItem('acces_token')
-    // localStorage.removeItem('user_id')
-
     this.router.navigate(['/'])
   }
+
 
 }
