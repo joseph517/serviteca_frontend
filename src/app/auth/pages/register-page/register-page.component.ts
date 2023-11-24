@@ -22,7 +22,7 @@ export class RegisterPageComponent {
     name: new FormControl<string>('', Validators.required),
     last_name: new FormControl<string>('', Validators.required),
     email: new FormControl<string>('',  [Validators.email, Validators.required]),
-    number_phone: new FormControl('', [Validators.required]),
+    number_phone: new FormControl('+57', [Validators.required]),
     password: new FormControl('', Validators.required)
   });
 

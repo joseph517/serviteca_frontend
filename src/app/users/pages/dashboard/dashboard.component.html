@@ -1,5 +1,9 @@
-<div class="button-logout">
+
+<div class="header">
   <p-button (click)="logout()" label="Cerrar sesion" [outlined]="true" severity="danger"></p-button>
+  <div class="name-user">
+    <h2>Hola, bienvenido: {{nameUser | uppercase}}</h2>
+  </div>
 </div>
 <div class="register">
   <user-register-vehicle></user-register-vehicle>

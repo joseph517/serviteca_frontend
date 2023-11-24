@@ -7,6 +7,7 @@
               <th>Modelo</th>
               <th>año</th>
               <th>Numero de placa</th>
+              <th>Eliminar</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-vehicle>
@@ -15,7 +16,7 @@
               <td>{{ vehicle.model }}</td>
               <td>{{ vehicle.plate_number }}</td>
               <td>{{ vehicle.year }}</td>
-              <p-button icon="pi pi-times" (click)="deleteVehicle(vehicle.id)" [rounded]="true" [text]="true" severity="danger "></p-button>
+              <td><p-button icon="pi pi-times" (click)="deleteVehicle(vehicle.id)" [rounded]="true" [text]="true" severity="danger "></p-button></td>
           </tr>
       </ng-template>
   </p-table>

@@ -1,4 +1,5 @@
 export interface Login {
+  name: string,
   refresh: string;
   access: string;
   user_id: number;

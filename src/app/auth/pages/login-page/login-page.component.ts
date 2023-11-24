@@ -31,7 +31,6 @@ export class LoginPageComponent {
 
   login(): void {
 
-    // if (!this.formLogin.valid) return alert('formulario no valido')
     if (!this.formLogin.valid) {
       this.formLogin.markAsDirty()
       this.formLogin.markAllAsTouched()
@@ -46,6 +45,7 @@ export class LoginPageComponent {
           console.log(response)
           localStorage.setItem("acces_token", response.access),
           localStorage.setItem("user_id", response.user_id.toString()),
+          localStorage.setItem("name", response.name)
 
           this.router.navigate(['/dashboard'])
         },

@@ -16,8 +16,12 @@ export class AuthService {
   ) { }
   private baseUrl: string = enviroments.baseUrl
 
-  login(form: Form): Observable<Login>{
+  checkAuthentication(): Observable<boolean>{
+    if(!localStorage.getItem('acces_token')) return of(false)
+    return of(true)
+  }
 
+  login(form: Form): Observable<Login>{
     return this.http.post<Login>(`${this.baseUrl}token/`, form);
 
   }
