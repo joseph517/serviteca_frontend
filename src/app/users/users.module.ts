@@ -11,6 +11,7 @@ import { PrimengModule } from '../primeng/primeng.module';
 import { RegisterVehicleComponent } from './components/register-vehicle/register-vehicle.component';
 import { DashboardAdminComponent } from './pages/dashboard-admin/dashboard-admin.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { ListUserComponent } from './components/list-user/list-user.component';
     PrimengModule,
     FormsModule,
     ReactiveFormsModule,
-
+    AuthModule
   ]
 })
 export class UsersModule { }

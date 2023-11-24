@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Form } from '@angular/forms';
 import { enviroments } from 'src/enviroments/enviroment';
 import { Observable, catchError, of } from 'rxjs';
-import { Login, Register } from '../interface/auth.interface';
+import { Login } from '../interface/auth.interface';
+import { Register } from 'src/app/shared/interfaces/shared.interface';
 
 
 @Injectable({

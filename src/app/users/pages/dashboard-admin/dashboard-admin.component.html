@@ -8,9 +8,12 @@
   <div class="button-container">
     <button (click)="showListVehicle()" >Lista de vehiculos</button>
     <button (click)="showListUser()">Lista de usuarios</button>
+    <button (click)="showFormMechanic()">Crear Mecanico</button>
   </div>
   <div class="body">
     <users-list-vehicle *ngIf="listVehicle"></users-list-vehicle>
     <user-list-user *ngIf="listClient"></user-list-user>
   </div>
+
+  <auth-register-page *ngIf="registerMechanic"></auth-register-page>
 </div>

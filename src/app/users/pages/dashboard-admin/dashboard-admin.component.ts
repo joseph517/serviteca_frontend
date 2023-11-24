@@ -12,6 +12,7 @@ export class DashboardAdminComponent implements OnInit {
   nameUser: string = ''
   listVehicle: boolean = false
   listClient: boolean = false
+  registerMechanic: boolean = false
 
 
   ngOnInit(): void {
@@ -34,5 +35,12 @@ export class DashboardAdminComponent implements OnInit {
   showListUser():void{
     this.listClient = !this.listClient
     this.listVehicle = false
+    this.registerMechanic = false
+  }
+  showFormMechanic():void{
+    this.registerMechanic = !this.registerMechanic
+    this.listClient = false
+    this.listVehicle = false
+
   }
 }

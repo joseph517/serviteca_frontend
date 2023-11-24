@@ -1,10 +1,10 @@
 <div class="header">
-  <p-button routerLink="/" class="header-button" label="Atras" severity="secondary"></p-button>
+  <p-button *ngIf="!showHeader" routerLink="/" class="header-button" label="Atras" severity="secondary"></p-button>
 </div>
 
   <div class="container-form flex flex-column">
 
-    <h1>Regístrate aquí</h1>
+    <h1 *ngIf="!showHeader">Regístrate aquí</h1>
     <form [formGroup]="form" (ngSubmit)="register()" class="card flex justify-content-center flex-column">
       <div class="flex flex-column gap-2">
           <label htmlFor="user_name">Nombre de usuario</label>
